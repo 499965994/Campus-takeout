@@ -1,0 +1,102 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	font: 400 1em/1.5 PingFang SC, Lantinghei SC, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+}
+
+html {
+	height: 90%;
+	background: linear-gradient(#008de1 50%, #fff 100%) no-repeat;
+}
+
+.nav {
+	position: relative;
+	height: 80px;
+	width: 100%;
+}
+
+.nav a {
+	display: inline-block;
+	color: #fff;
+	text-decoration: none;
+}
+
+.login {
+	position: absolute;
+	left: 10%;
+	line-height: 100px;
+}
+
+.regist {
+	position: absolute;
+	right: 10%;
+	line-height: 80px;
+}
+
+.info {
+	width: 30%;
+	height: 100px;
+	position: absolute;
+	left: 35%;
+	top: 30%;
+
+	text-align: center;
+
+}
+
+.info img {
+	width: 100%;
+	height: 100%;
+}
+
+.btngroup {
+	width: 50%;
+	height: 40px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	position: absolute;
+	left: 25%;
+	top: 50%;
+}
+
+.btngroup a {
+	display: line-block;
+	width: 120px;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.1);
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 10px;
+}
+
+.btngroup a:hover {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.foot {
+	position: absolute;
+	bottom: 0;
+	height: 10%;
+	width: 100%;
+}
+
+.foot p {
+	text-align: center;
+	width: 100%;
+	font-size: 12px;
+	color: #666;
+}
+
+.foot p a {
+	text-decoration: none;
+	color: #666;
+}
+
+.foot p img {
+	height: 30px;
+	margin-top: 5px;
+}

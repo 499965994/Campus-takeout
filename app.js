@@ -37,6 +37,14 @@ app.get('/', (req,res) => {
 app.get("/merchantLogin",(req,res)=>{
 	res.render("merchantLogin");
 });
+//用户注册
+app.get("/goregist",(req,res)=>{
+	res.render("regist");
+});
+//注册完成，返回登录页面
+app.get("/gologin",(req,res)=>{
+	res.render("userLogin");
+});
 //用户入口
 app.get("/userLogin",(req,res)=>{
 	res.render("userLogin");

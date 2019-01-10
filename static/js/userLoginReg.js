@@ -57,8 +57,6 @@ function userLogin() {
 				}
 			}
 		}
-
-
 	}
 
 }
@@ -117,7 +115,6 @@ function userReg() {
 				}
 			}
 		}
-
 
 	}
 

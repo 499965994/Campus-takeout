@@ -4,13 +4,15 @@ window.onload = function() {
 
 function adminLogin() {
 	let button = document.querySelector('.adminlogin');
-	if(!button){return;}
+	if (!button) {
+		return;
+	}
 	button.onclick = function() {
 		let errNum = 0;
 		//获取输入的信息，并检查
 		let aname = document.querySelector('input[name="aname"]'); //属性选择器
 		let a_value = aname.value;
-		if (a_value == "" ){
+		if (a_value == "") {
 			aname.parentElement.nextElementSibling.innerHTML = '*必填';
 			aname.focus();
 			errNum++;

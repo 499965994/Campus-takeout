@@ -4,7 +4,10 @@ window.onload = function() {
 }
 
 function userLogin() {
-	let button = document.querySelector('');
+	let button = document.querySelector('.userlogin');
+	if (!button) {
+		return;
+	}
 	button.onclick = function() {
 		let errNum = 0;
 		//获取输入的信息，并检查
@@ -26,97 +29,83 @@ function userLogin() {
 		} else {
 			userpasswd.parentElement.nextElementSibling.innerHTML = '';
 		}
-		// 把数据提交到服务器  前提：数据填写完整
+		//判断
 		if (!errNum) {
-			// 发起ajax请求
-			let xhr = new XMLHttpRequest();
-			xhr.open('POST', '/userLogin');
-			//设置请求头
-			xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-			//发送数据到服务器  ES6里面的字符串模板
-			xhr.send(`username=${u_value}&userpasswd=${up_value}`);
-
-			// 状态事件监听并接收响应数据
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					let result = xhr.responseText;
-					// 接收的是字符串类型，需要转成对象
-					result = JSON.parse(result);
-					console.log(result);
-					if (result.r == 'username_not_found') {
+			//通过ajax方式把数据发送到服务器
+			axios.post('/userLogin', {
+					username: u_value,
+					apsswd: up_value
+				})
+				.then(function(response) {
+					if (response.data.r == 'username_not_found') {
 						username.parentElement.nextElementSibling.innerHTML = '*账号不存在';
 						username.focus();
-					} else if (result.r == 'userpasswd_err') {
+					} else if (response.data.r == 'userpasswd_err') {
 						userpasswd.parentElement.nextElementSibling.innerHTML = '*密码错误';
 						userpasswd.focus();
-					} else if (result.r == 'ok') {
+					} else if (response.data.r == 'ok') {
 						window.location.href = '/ucont';
 					} else {
 						alert('未知错误，刷新后操作');
 					}
-				}
-			}
+				})
+				.catch(function(error) {})
 		}
 	}
 
 }
 
 function userReg() {
-	let button = document.querySelector('');
+	let button = document.querySelector('.userregist');
+	if (!button) {
+		return;
+	}
 	button.onclick = function() {
 		let errNum = 0;
 		//获取输入的信息，并检查
-		let username = document.querySelector('input[name="username"]'); //属性选择器
-		let u_value = username.value;
-		if (u_value == '') {
-			username.parentElement.nextElementSibling.innerHTML = '*必填';
-			username.focus();
+		let rname = document.querySelector('input[name="rname"]'); //属性选择器
+		let r_value = rname.value;
+		if (r_value == '') {
+			rname.parentElement.nextElementSibling.innerHTML = '*必填';
+			rname.focus();
 			errNum++;
 		} else {
-			username.parentElement.nextElementSibling.innerHTML = '';
+			rname.parentElement.nextElementSibling.innerHTML = '';
 		}
-		let userpasswd = document.querySelector('input[name="userpasswd"]') //属性选择器
-		let up_value = userpasswd.value;
-		if (up_value == '') {
-			userpasswd.parentElement.nextElementSibling.innerHTML = '*必填';
-			userpasswd.focus();
+		let phonenum = document.querySelector('input[name="phonenum"]'); //属性选择器
+		let phone_value = phonenum.value;
+		if (phone_value == '') {
+			phonenum.parentElement.nextElementSibling.innerHTML = '*必填';
+			phonenum.focus();
 			errNum++;
 		} else {
-			userpasswd.parentElement.nextElementSibling.innerHTML = '';
+			phonenum.parentElement.nextElementSibling.innerHTML = '';
 		}
-		// 把数据提交到服务器  前提：数据填写完整
+		let rpasswd = document.querySelector('input[name="rpasswd"]') //属性选择器
+		let rp_value = rpasswd.value;
+		if (rp_value == '') {
+			rpasswd.parentElement.nextElementSibling.innerHTML = '*必填';
+			rpasswd.focus();
+			errNum++;
+		} else {
+			rpasswd.parentElement.nextElementSibling.innerHTML = '';
+		}
+		//判断
 		if (!errNum) {
-			// 发起ajax请求
-			let xhr = new XMLHttpRequest();
-			xhr.open('POST', '/userLogin');
-			//设置请求头
-			xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-			//发送数据到服务器  ES6里面的字符串模板
-			xhr.send(`username=${u_value}&userpasswd=${up_value}`);
-
-			// 状态事件监听并接收响应数据
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState == 4 && xhr.status == 200) {
-					let result = xhr.responseText;
-					// 接收的是字符串类型，需要转成对象
-					result = JSON.parse(result);
-					console.log(result);
-					if (result.r == 'username_not_found') {
-						username.parentElement.nextElementSibling.innerHTML = '*账号不存在';
-						username.focus();
-					} else if (result.r == 'userpasswd_err') {
-						userpasswd.parentElement.nextElementSibling.innerHTML = '*密码错误';
-						userpasswd.focus();
-					} else if (result.r == 'ok') {
-						window.location.href = '/ucont';
+			//通过ajax方式把数据发送到服务器
+			axios.post('/userLogin', {
+					rname: r_value,
+					phonenum: phone_value,
+					apsswd: rp_value
+				})
+				.then(function(response) {
+					if (response.data.r == 'ok') {
+						window.location.href = '/userlogin';
 					} else {
-						alert('未知错误，刷新后操作');
+						alert('未知错误');
 					}
-				}
-			}
+				})
+				.catch(function(error) {})
 		}
-
 	}
-
-
 }

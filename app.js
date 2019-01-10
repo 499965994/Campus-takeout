@@ -107,7 +107,6 @@ app.post('/userLogin', (req, res) => {
 // app.use('./ucont', require('./router/ucont'));
 // // 商家管理界面的子路由
 // app.use('/acont', require('./router/acont'));
-
 //静态资源托管
 app.use(express.static(__dirname + '/static'));
 

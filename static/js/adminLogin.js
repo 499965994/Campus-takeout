@@ -4,6 +4,7 @@ window.onload = function() {
 
 function adminLogin() {
 	let button = document.querySelector('.adminlogin');
+	if(!button){return;}
 	button.onclick = function() {
 		let errNum = 0;
 		//获取输入的信息，并检查

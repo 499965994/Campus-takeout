@@ -1,3 +1,4 @@
+/* 通用配置 */
 * {
 	margin: 0px;
 	padding: 0px;
@@ -10,6 +11,7 @@ html {
 	background: linear-gradient(#008de1 50%, #fff 100%) no-repeat;
 }
 
+/* 导航栏样式 */
 .nav {
 	position: relative;
 	height: 80px;
@@ -28,21 +30,31 @@ html {
 	line-height: 100px;
 }
 
-.regist {
+.p-regist {
 	position: absolute;
 	right: 10%;
 	line-height: 80px;
+	color: #fff;
 }
 
+.regist {
+	display: inline-block;
+	width: 60px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.3);
+	height: 40px;
+	line-height: 40px;
+	border-radius: 10px;
+}
+
+/* 页面中间logo样式 */
 .info {
 	width: 30%;
 	height: 100px;
 	position: absolute;
 	left: 35%;
-	top: 30%;
-
+	top: 200px;
 	text-align: center;
-
 }
 
 .info img {
@@ -50,15 +62,15 @@ html {
 	height: 100%;
 }
 
+/* 首页按钮组样式 */
 .btngroup {
 	width: 50%;
 	height: 40px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	position: absolute;
-	left: 25%;
-	top: 50%;
+	margin: 0 auto;
+	margin-top: 300px;
 }
 
 .btngroup a {
@@ -77,10 +89,66 @@ html {
 	background: rgba(0, 0, 0, 0.3);
 }
 
+
+/* 注册,登陆页面 表单样式 */
+.layui-form {
+	position: absolute;
+	top: 350px;
+	left: calc(50% - 188px);
+	text-align: center;
+}
+
+.layui-input-block {
+	margin-left: 0;
+	text-align: center;
+	width: 100%;
+}
+
+.layui-form-item {
+	display: flex;
+	justify-content: center;
+}
+
+.layui-word-aux {
+	color: #ec362d !important;
+}
+
+.layui-form-label {
+	color: #eee;
+	font-size: 18px;
+}
+
+.layui-input {
+	color: #595a5a;
+}
+
+.layui-btn {
+	margin-left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 底部样式 */
 .foot {
 	position: absolute;
-	bottom: 0;
-	height: 10%;
+	bottom: 0px;
+	height: 80px;
 	width: 100%;
 }
 

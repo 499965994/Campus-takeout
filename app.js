@@ -13,22 +13,23 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 // 连接到数据库
-const mydb = mysql.createConnection({
-	user: 'root',
-	password: 'root',
-	host: 'localhost',
-	database: 'h51810',
-	port: 3306
-});
-mydb.connect();
-app.get('/', (req.res) => {
-	res.send("首页");
-})
+// const mydb = mysql.createConnection({
+// 	user: 'root',
+// 	password: 'root',
+// 	host: 'localhost',
+// 	database: 'h51810',
+// 	port: 3306
+// });
+// mydb.connect();
+
 //模板引擎设置
 app.engine('html', ejs.renderFile); //自定义模板引擎html
 app.set('views', 'myviews'); //模板文件所在的路径
 app.set('view engine', 'html'); //注册模板引擎到express
 
+app.get('/', (req,res) => {
+	res.render("merchantLogin")
+})
 //静态资源托管
 app.use(express.static(__dirname + '/static'));
 //端口监听

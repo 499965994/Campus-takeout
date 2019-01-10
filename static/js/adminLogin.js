@@ -25,25 +25,29 @@ function adminLogin() {
 		} else {
 			apasswd.parentElement.nextElementSibling.innerHTML = '';
 		}
+		//判断
+		if (!errNum) {
+			//通过ajax方式把数据发送到服务器
+			axios.post('/adminLogin', {
+					aname: a_value,
+					apsswd: ap_value
+				})
+				.then(function(response) {
+					if (response.data == 'aname_not_found') {
+						aname.parentElement.nextElementSibling.innerHTML = '*账号不存在';
+						aname.focus();
+					} else if (response.data == 'apasswd_err') {
+						apasswd.parentElement.nextElementSibling.innerHTML = '*密码错误';
+						apasswd.focus();
+					} else if (response.data == 'ok') {
+						window.location.href = '/acont';
+					} else {
+						alert('未知错误，刷新后操作');
+					}
+				})
+				.catch(function(error) {})
+		}
 
-		//通过ajax方式把数据发送到服务器
-		axios.post('/adminLogin', {
-				aname: a_value,
-				apsswd: ap_value
-			})
-			.then(function(response) {
-				if (response.data == 'aname_not_found') {
-					aname.parentElement.nextElementSibling.innerHTML = '*账号不存在';
-					aname.focus();
-				} else if (response.data == 'apasswd_err') {
-					apasswd.parentElement.nextElementSibling.innerHTML = '*密码错误';
-					apasswd.focus();
-				} else if (response.data == 'ok') {
-					window.location.href = '/acont';
-				} else {
-					alert('未知错误，刷新后操作');
-				}
-			})
-			.catch(function(error) {})
+
 	}
 }

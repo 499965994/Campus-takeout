@@ -126,9 +126,12 @@ html {
 	margin-left: 30px;
 }
 
+/* 主体样式 */
 
-
-
+.H{
+	width: 76px;
+	color: red;
+}
 
 
 

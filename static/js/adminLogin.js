@@ -3,13 +3,13 @@ window.onload = function() {
 }
 
 function adminLogin() {
-	let button = document.querySelector('');
+	let button = document.querySelector('.adminlogin');
 	button.onclick = function() {
 		let errNum = 0;
 		//获取输入的信息，并检查
 		let aname = document.querySelector('input[name="aname"]'); //属性选择器
 		let a_value = aname.value;
-		if (a_value == '') {
+		if (a_value == "" ){
 			aname.parentElement.nextElementSibling.innerHTML = '*必填';
 			aname.focus();
 			errNum++;
@@ -18,7 +18,7 @@ function adminLogin() {
 		}
 		let apasswd = document.querySelector('input[name="apasswd"]') //属性选择器
 		let ap_value = apasswd.value;
-		if (ap_value == '') {
+		if (ap_value == "") {
 			apasswd.parentElement.nextElementSibling.innerHTML = '*必填';
 			apasswd.focus();
 			errNum++;
@@ -30,16 +30,16 @@ function adminLogin() {
 			//通过ajax方式把数据发送到服务器
 			axios.post('/adminLogin', {
 					aname: a_value,
-					apsswd: ap_value
+					apasswd: ap_value
 				})
 				.then(function(response) {
-					if (response.data == 'aname_not_found') {
+					if (response.data.r == 'aname_not_found') {
 						aname.parentElement.nextElementSibling.innerHTML = '*账号不存在';
 						aname.focus();
-					} else if (response.data == 'apasswd_err') {
+					} else if (response.data.r == 'apasswd_err') {
 						apasswd.parentElement.nextElementSibling.innerHTML = '*密码错误';
 						apasswd.focus();
-					} else if (response.data == 'ok') {
+					} else if (response.data.r == 'ok') {
 						window.location.href = '/acont';
 					} else {
 						alert('未知错误，刷新后操作');
@@ -47,7 +47,5 @@ function adminLogin() {
 				})
 				.catch(function(error) {})
 		}
-
-
 	}
 }

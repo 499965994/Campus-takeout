@@ -29,6 +29,18 @@ app.engine('html', ejs.renderFile); //自定义模板引擎html
 app.set('views', 'myviews'); //模板文件所在的路径
 app.set('view engine', 'html'); //注册模板引擎到express
 
+//进入首页
+app.get('/', (req,res) => {
+	res.render("index");
+});
+//商家入口
+app.get("/merchantLogin",(req,res)=>{
+	res.render("merchantLogin");
+});
+//用户入口
+app.get("/userLogin",(req,res)=>{
+	res.render("userLogin");
+});
 
 //admin登录post路由
 app.post('/adminLogin', (req, res) => {
@@ -43,7 +55,7 @@ app.post('/adminLogin', (req, res) => {
 			return;
 		}
 		//检查密码是否正确
-		if (result[0].passwd != adminLoginData.passwd) {
+		if (result[0].apasswd != adminLoginData.apasswd) {
 			res.json({
 				r: 'apasswd_err'
 			});

@@ -78,17 +78,17 @@ app.post('/adminLogin', (req, res) => {
 //user登录post路由
 app.post('/userLogin', (req, res) => {
 	let userLoginData = req.body;
-	let sql = 'select * from user where username = ?';
-	mydb.query(sql, [userLoginData.aname], (err, result) => {
+	let sql = 'select * from user where phonenum = ?';
+	mydb.query(sql, [userLoginData.phonenum], (err, result) => {
 		//检查账号是否存在
-		if (!result.length) {
+		if (result.length==0){
 			res.json({
-				r: 'username_not_found'
+				r: 'phonenum_not_found'
 			});
 			return;
 		}
 		//检查密码是否正确
-		if (result[0].passwd != userLoginData.passwd) {
+		if (result[0].userpasswd!= userLoginData.userpasswd) {
 			res.json({
 				r: 'userpasswd_err'
 			});
@@ -100,6 +100,30 @@ app.post('/userLogin', (req, res) => {
 		});
 	})
 })
+//用户注册信息录入
+app.post("/userRegist",(req,res)=>{
+	let rname=req.body.rname;
+	let phonenum=req.body.phonenum;
+	let apasswd=req.body.apsswd;
+	mydb.query("select * from user where phonenum=?",[phonenum],(err,result)=>{
+		if(err){
+			console.log(err);
+			return;
+		}
+		if(result.length){
+			res.json({r:"phonenum_has_exists"});
+			return;
+		}else{
+			mydb.query("insert into user(username,userpasswd,regtime,phonenum) value(?,?,now(),?)",[rname,apasswd,phonenum],(err,result)=>{
+				if(err){
+					console.log(err);
+					return;
+				}
+				res.json({r:"ok"});
+			});
+		}
+	});
+});
 
 // 用户个人中心的子路由
 // app.use('/userinfo', require('./router/userinfo'));

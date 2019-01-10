@@ -1,0 +1,170 @@
+/* 通用配置 */
+* {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	font: 400 1em/1.5 PingFang SC, Lantinghei SC, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
+}
+
+html {
+	height: 90%;
+	background: linear-gradient(#008de1 50%, #fff 100%) no-repeat;
+}
+
+/* 导航栏样式 */
+.nav {
+	position: relative;
+	height: 80px;
+	width: 100%;
+}
+
+.nav a {
+	display: inline-block;
+	color: #fff;
+	text-decoration: none;
+}
+
+.login {
+	position: absolute;
+	left: 10%;
+	line-height: 100px;
+}
+
+.p-regist {
+	position: absolute;
+	right: 10%;
+	line-height: 80px;
+	color: #fff;
+}
+
+.regist {
+	display: inline-block;
+	width: 60px;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.3);
+	height: 40px;
+	line-height: 40px;
+	border-radius: 10px;
+}
+
+/* 页面中间logo样式 */
+.info {
+	width: 30%;
+	height: 100px;
+	position: absolute;
+	left: 35%;
+	top: 200px;
+	text-align: center;
+}
+
+.info img {
+	width: 100%;
+	height: 100%;
+}
+
+/* 首页按钮组样式 */
+.btngroup {
+	width: 50%;
+	height: 40px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 auto;
+	margin-top: 300px;
+}
+
+.btngroup a {
+	display: line-block;
+	width: 120px;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.1);
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 10px;
+}
+
+.btngroup a:hover {
+	background: rgba(0, 0, 0, 0.3);
+}
+
+
+/* 注册,登陆页面 表单样式 */
+.layui-form {
+	position: absolute;
+	top: 350px;
+	left: calc(50% - 188px);
+	text-align: center;
+}
+
+.layui-input-block {
+	margin-left: 0;
+	text-align: center;
+	width: 100%;
+}
+
+.layui-form-item {
+	display: flex;
+	justify-content: center;
+}
+
+.layui-word-aux {
+	color: #ec362d !important;
+}
+
+.layui-form-label {
+	color: #eee;
+	font-size: 18px;
+}
+
+.layui-input {
+	color: #595a5a;
+}
+
+.layui-btn {
+	margin-left: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 底部样式 */
+.foot {
+	position: absolute;
+	bottom: 0px;
+	height: 80px;
+	width: 100%;
+}
+
+.foot p {
+	text-align: center;
+	width: 100%;
+	font-size: 12px;
+	color: #666;
+}
+
+.foot p a {
+	text-decoration: none;
+	color: #666;
+}
+
+.foot p img {
+	height: 30px;
+	margin-top: 5px;
+}

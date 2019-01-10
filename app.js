@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json()); //接收json格式的数据
 // 连接到数据库
+
+
 global.mydb = mysql.createConnection({
 	user: 'root',
 	password: '123',
@@ -26,6 +28,7 @@ mydb.connect();
 app.get('/', (req.res) => {
 	res.send("首页");
 })
+
 //模板引擎设置
 app.engine('html', ejs.renderFile); //自定义模板引擎html
 app.set('views', 'myviews'); //模板文件所在的路径
@@ -89,7 +92,6 @@ app.use('/userinfo', require('./router/userinfo'));
 app.use('./ucont')
 // 商家管理界面的子路由
 app.use('/acont', require('./router/acont'));
-
 
 //静态资源托管
 app.use(express.static(__dirname + '/static'));

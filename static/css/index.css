@@ -148,7 +148,7 @@ html {
 /* 底部样式 */
 .foot {
 	position: absolute;
-	top:800px;
+	top: 800px
 	height: 80px;
 	width: 100%;
 }

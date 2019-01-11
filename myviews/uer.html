@@ -1,0 +1,70 @@
+<% include ./common/demo-head.html%>
+<ul class="middle-nav">
+	<li><a href="">所有商品</a></li>
+	<li><a href="">评价</a></li>
+</ul>
+<hr>
+<div class="show">
+	<div class="goods">
+
+
+		<!-- 商品循环,在这 -->
+		<div class="box">
+			<!-- 图片信息 -->
+			<div class="box-img">
+				<img src="https://fuss10.elemecdn.com/1/2e/20670a4bcdf645267878363ba71a6jpeg.jpeg?imageMogr2/thumbnail/100x100/format/webp/quality/85">
+			</div>
+			<!-- 文字信息 -->
+			<div class="box-text">
+				<p class="box-name">涛涛鸡汤饭</p>
+				<p class="box-info">招牌大补参鸡汤，营养美味不是吹的，特价尝鲜一个月。</p>
+				<p class="box-score">评分 : <a href="">x</a></p>
+				<p class="box-btn"><span>¥9.9</span> <a href="">加入购物车</a></p>
+			</div>
+		</div>
+
+
+
+	</div>
+	<!-- 公告组件 -->
+	<div class="notice">
+		<div class="notice-text">
+			<h3>商家公告</h3>
+			<p>多款新品上线，请大家品尝后多多建议，祝愿大家身体安康，工作顺利。</p>
+		</div>
+		<p>配送说明：</p>
+		<p>配送费¥0.5</p>
+		<div class="notice-wor">
+			<p>商家原因导致订单取消，赔付代金券</p>
+			<p>该商户食品安全已由国泰产险承担，食品安全有保障</p>
+			<p>该商家支持开发票，请在下单时填写好发票抬头</p>
+		</div>
+	</div>
+</div>
+<!-- 购物车组件, 当点击家务购物车时,此处使用循环 -->
+<div class="shopcart">
+	<div class="shopcart-head">购物车 <a href="">清空</a></div><br><br>
+	<table class="layui-table">
+		<colgroup>
+			<col width="150">
+			<col width="100">
+			<col width="100">
+		</colgroup>
+		<tbody>
+
+			<!-- 循环 -->
+			<tr>
+				<td>涛涛鸡汤饭</td>
+				<td>1</td>
+				<td>¥ <a href="">5</a></td>
+			</tr>
+
+
+
+
+		</tbody>
+	</table>
+
+</div>
+<div class="shopcart-foot">去结算</div>
+<% include ./common/demo-foot.html%>

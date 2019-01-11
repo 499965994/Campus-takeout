@@ -142,7 +142,7 @@
 
 .goods {
 	width: 50%;
-	position: absolute;
+	position: relative;
 	left: 10%;
 	height: 1500px;
 }
@@ -292,7 +292,14 @@
 }
 
 
-.middle-nav li span {
-	color: #999;
-	font-size: 12px;
+/* 菜品查询样式 */
+.layui-inline {
+	margin-left: -30px;
+	font: 16px Helvetica Neue, Helvetica, PingFang SC, Tahoma, Arial, sans-serif;
+}
+
+/* 用户评论样式 */
+.layui-form {
+	position: absolute;
+	bottom: o;
 }

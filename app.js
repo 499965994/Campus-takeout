@@ -127,8 +127,8 @@ app.post("/userRegist",(req,res)=>{
 
 // 用户个人中心的子路由
 // app.use('/userinfo', require('./router/userinfo'));
-// // 用户购买页面子路由
-// app.use('./ucont', require('./router/ucont'));
+// // 用户操作页面子路由
+app.use('/ucont', require('./router/ucont.js'));
 // // 商家管理界面的子路由
 // app.use('/acont', require('./router/acont'));
 //静态资源托管

@@ -133,7 +133,6 @@ app.use('/ucont', require('./router/ucont.js'));
 // app.use('/acont', require('./router/acont'));
 //静态资源托管
 app.use(express.static(__dirname + '/static'));
-
 //端口监听
 app.listen(81, () => {
 	console.log('服务器已启动，端口为81');

@@ -1,4 +1,41 @@
 <% include ./common/demo-head.html%>
+<div class="head-login btn-group">
+	<ul class="layui-nav">
+		<li class="layui-nav-item">
+			<a href="javascript:;"><img class="layui-nav-img" src="https://fuss10.elemecdn.com/3/58/a93fd92d242a7352e9fdb64b7d2eapng.png?imageMogr2/thumbnail/95x95/format/webp/quality/85"><%= username%></a>
+			<dl class="layui-nav-child">
+				<!-- 二级菜单 -->
+				<dd><a href="">个人中心</a></dd>
+				<dd><a href="">我的地址</a></dd>
+				<dd><a href="/">退出登录</a></dd>
+			</dl>
+		</li>
+	</ul>
+</div>
+<div class="head-info">
+	<div class="info-img">
+		<img src="https://fuss10.elemecdn.com/3/58/a93fd92d242a7352e9fdb64b7d2eapng.png?imageMogr2/thumbnail/95x95/format/webp/quality/85"
+		 alt="">
+	</div>
+	<p class="sname">川菜一绝（银泰城店）</p>
+	<p class="score">评分 : <a href="" style="color: yellow; font-size: 18px;">⭐⭐⭐⭐⭐</a></p>
+</div>
+<div class="introduce">
+	<div>
+		<span>起送价</span>
+		<p>15元</p>
+	</div>
+	<div>
+		<span>配送费</span>
+		<p>配送费¥0.5</p>
+	</div>
+	<div>
+		<span>平均送达速度</span>
+		<p>43分钟</p>
+	</div>
+</div>
+</div>
+</div>
 <ul class="middle-nav">
 	<li><a href="">所有商品</a></li>
 	<li><a href="">评价</a></li>
@@ -9,21 +46,21 @@
 
 
 		<!-- 商品循环,在这 -->
+		<% for(var i=0;i<plist.length;i++){%>
 		<div class="box">
 			<!-- 图片信息 -->
 			<div class="box-img">
-				<img src="https://fuss10.elemecdn.com/1/2e/20670a4bcdf645267878363ba71a6jpeg.jpeg?imageMogr2/thumbnail/100x100/format/webp/quality/85">
+				<img src=<%= plist[i].imgsrc%>>
 			</div>
 			<!-- 文字信息 -->
-			<div class="box-text">
-				<p class="box-name">涛涛鸡汤饭</p>
-				<p class="box-info">招牌大补参鸡汤，营养美味不是吹的，特价尝鲜一个月。</p>
-				<p class="box-score">评分 : <a href="">x</a></p>
-				<p class="box-btn"><span>¥9.9</span> <a href="">加入购物车</a></p>
+			<div class="box-text addshopcar">
+				<p class="box-name"><%= plist[i].pname %></p>
+				<p class="box-info"><%= plist[i].pdescribe %></p>
+				<p class="box-score"><span>评分:<%= plist[i].grade %></span></p>
+				<p class="box-btn"><span>¥<%= plist[i].price %></span><a class="addcar" style="cursor: pointer;">加入购物车</a></p>
 			</div>
 		</div>
-
-
+		<%}%>
 
 	</div>
 	<!-- 公告组件 -->
@@ -43,28 +80,24 @@
 </div>
 <!-- 购物车组件, 当点击家务购物车时,此处使用循环 -->
 <div class="shopcart">
-	<div class="shopcart-head">购物车 <a href="">清空</a></div><br><br>
+	<div class="shopcart-head">购物车 <a class="clearcar" style="color: red; cursor: pointer;">清空</a></div><br><br>
 	<table class="layui-table">
 		<colgroup>
-			<col width="150">
+			<col width="180">
+			<col width="100">
 			<col width="100">
 			<col width="100">
 		</colgroup>
 		<tbody>
-
 			<!-- 循环 -->
-			<tr>
-				<td>涛涛鸡汤饭</td>
-				<td>1</td>
-				<td>¥ <a href="">5</a></td>
-			</tr>
-
-
-
-
+			<!-- <tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><a class="deletecar"></a></td>
+			</tr> -->
 		</tbody>
 	</table>
-
 </div>
-<div class="shopcart-foot">去结算</div>
+<div class="shopcart-foot"><a class="todel" style="cursor: pointer;">去结算<a></div>
 <% include ./common/demo-foot.html%>

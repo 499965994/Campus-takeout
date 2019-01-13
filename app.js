@@ -9,6 +9,21 @@ const ejs = require('ejs');
 // 2，创建一个web应用
 const app = express();
 //接收post过来的数据
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+//开启cookie
+let secret = 'moc.01815h.www';
+app.use(cookieParser(secret));
+// 开启session
+app.use(session({
+    secret: secret,
+    name:'sessid1810',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {maxAge:24*3600000}
+  }));
+
+
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
@@ -94,6 +109,8 @@ app.post('/userLogin', (req, res) => {
 			});
 			return;
 		}
+		req.session.phonenum = result[0].phonenum;
+        req.session.username = result[0].username;
 		//登录成功
 		res.json({
 			r: 'ok'

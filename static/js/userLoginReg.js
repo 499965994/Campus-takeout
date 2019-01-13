@@ -55,7 +55,7 @@ function userLogin() {
 						userpasswd.parentElement.nextElementSibling.innerHTML = '*密码错误';
 						userpasswd.focus();
 					} else if (response.data.r == 'ok') {
-						window.location.href = 'ucont?phonenum='+u_value;
+						window.location.href = "ucont?phonenum="+u_value;
 					} else {
 						alert('未知错误，刷新后操作');
 					}

@@ -22,7 +22,7 @@ router.get('/',(req,res)=>{
 			});
 		}
 	},function(err,result){
-		res.render("uer",{username:result.username,plist:result.list});4
+		res.render("uer",{username:result.username,plist:result.list});
 	});
 });
 

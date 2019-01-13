@@ -131,24 +131,10 @@ html {
 	color: red;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 底部样式 */
 .foot {
 	position: absolute;
-	top: 800px
+	top: 700px;
 	height: 80px;
 	width: 100%;
 }

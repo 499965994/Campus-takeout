@@ -1,4 +1,17 @@
 </body>
+<script src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
+<script type="text/javascript">
+        let E = window.wangEditor
+        let editor = new E('#editor')
+        // let editor = new E( document.getElementById('editor'));
+		let $text1 = document.getElementById('text1');
+        editor.customConfig.onchange = function (html) {
+            // 监控变化，同步更新到 textarea
+            $text1.value=html;
+        }
+        editor.create()
+    </script>
+<script src="/js/userLoginReg.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/layui/layui.all.js"></script>
 	<script>
 		layui.use('element', function() {

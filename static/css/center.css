@@ -416,3 +416,49 @@ td {
 		height: 35px;
 		line-height: 35px;
 	}
+	/* 评论页面 */
+	.com {
+		margin-top: 20px;
+		width: 100%;
+		min-height: 100px;
+		position: relative;
+	}
+	.com-head {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 100px;
+		height: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.com-head img {		
+		width: 70px;
+		height: 70px;
+		border-radius: 50%;
+	}
+	.com-name {
+		position: absolute;
+		left: 110px;
+		top: 10px;
+		font-size: 16px;
+		font-weight: 700;
+	}
+	.com-time {
+		position:absolute;
+		bottom: -30px;
+		right: 0;
+		color: #999;
+		font-size: 12px;
+	}
+	.com-text {
+		position: absolute;
+		top: 35px;
+		left: 110px;
+		width: 80%;
+		height: 80px;
+		overflow: hidden;
+		text-indent: 24px;
+		letter-spacing: 1px;
+	}

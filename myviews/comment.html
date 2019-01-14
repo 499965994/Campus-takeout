@@ -1,5 +1,11 @@
 <% include ./common/demo-head.html%>
-<a href="/ucont"><img class="layui-nav-img" src="https://fuss10.elemecdn.com/3/58/a93fd92d242a7352e9fdb64b7d2eapng.png?imageMogr2/thumbnail/95x95/format/webp/quality/85"><%= username%></a>
+
+<style>
+.w-e-text-container {
+	height: 150px !important;
+}
+</style>
+<a href="/ucont"><img class="layui-nav-img" src="https://fuss10.elemecdn.com/3/58/a93fd92d242a7352e9fdb64b7d2eapng.png?imageMogr2/thumbnail/95x95/format/webp/quality/85"></a>
 							<dl class="layui-nav-child">
 								<!-- 二级菜单 -->
 								<dd><a href="">个人中心</a></dd>
@@ -40,45 +46,61 @@
 <hr>
 <div class="show">
 	<div class="goods">
-<!-- 		<div class="com">
-			<div class="com-name">用户名</div>
-			<div class="com-text"> 1、食用安全 食用安全是菜品作为食品的基本前题。要保证菜品食用安全，就必须保证菜点的所有原料无毒无害、清洁卫生，力求烹调加工方法得当，避免加工环境污染食品，使菜品对人体无毒无害。
-				2、营养合理 营养合理是菜品作为食品的必要条件。对于单份菜品，要尽量避免原材料所合营养素在烹调加工中的损失，适当注意原材料的荤素搭配。对于整套菜点，不仅要注意供给数量充足的热量和营养</div>
-		</div> -->
-		<table class="layui-table">
+		<div class="com">
+			<div class="com-head">
+				<img src="https://fuss10.elemecdn.com/3/58/a93fd92d242a7352e9fdb64b7d2eapng.png?imageMogr2/thumbnail/95x95/format/webp/quality/85" alt="">
+			</div>
+			<p class="com-name">小明</p>
+			<p class="com-text"> 
+			食用安全 食用安全是菜品作为食品的基本前题。要保证菜品食用安全，就必须保证菜点的所有原料无毒无害、清洁卫生，力求烹调加工方法得当，避免加工环境污染食品，使菜品对人体无毒无害。
+				
+			</p>
+			<p class="com-time">2019/5/16</p>
+		</div>
+		<div class="com">
+			<div class="com-head">
+				<img src="https://fuss10.elemecdn.com/3/58/a93fd92d242a7352e9fdb64b7d2eapng.png?imageMogr2/thumbnail/95x95/format/webp/quality/85" alt="">
+			</div>
+			<p class="com-name">小明</p>
+			<p class="com-text"> 
+			食用安全 食用安全是菜品作为食品的基本前题。要保证菜品食用安全，就必须保证菜点的所有原料无毒无害、清洁卫生，力求烹调加工方法得当，避免加工环境污染食品，使菜品对人体无毒无害。
+				
+			</p>
+			<p class="com-time">2019/5/16</p>
+		</div>
+		<!-- <table class="layui-table">
   <colgroup>
-    <col width="80">
-    <col width="400">
-	<col width="100">
+    <col width="100">
+    <col width="600">
+
   </colgroup>
   <thead>
     <tr>
 		<th>昵称</th>
 		<th>评论内容</th>
-		<th>发表时间</th>
     </tr> 
   </thead>
   <tbody>
-	  <% for(let i=0;i<tlist.length;i++){%>
     <tr>
-      <td><%= tlist[i].username%></td>
-      <td><%= tlist[i].about%></td>
-	  <td><%= new Date(tlist[i].talktimes).toLocaleString()%></td>
+      <td>贤心</td>
+      <td> 1、食用安全 食用安全是菜品作为食品的基本前题。要保证菜品食用安全，就必须保证菜点的所有原料无毒无害、清洁卫生，力求烹调加工方法得当，避免加工环境污染食品，使菜品对人体无毒无害。
+				2、营养合理 营养合理是菜品作为食品的必要条件。对于单份菜品，要尽量避免原材料所合营养素</td>
+
     </tr>
-	<%}%>
+
   </tbody>
-</table>
+</table> -->
 		<form class="layui-form" action="">
-			<div class="layui-form-item layui-form-text">
+			<div class="layui-form-item layui-form-text" style="width: 800px;">
 				<label class="layui-form-label">评论</label>
 				<div class="layui-input-block">
-					<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-					<div class="layui-form-mid layui-word-aux H"></div>
+					 <div id="editor"></div>
+					<textarea style="display: none;" id="$text1" name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<input type="button" class="layui-btn" name="talkbtn" value="提交">
+					<button class="layui-btn">提交</button>
 				</div>
 			</div>
 		</form>

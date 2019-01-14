@@ -117,6 +117,7 @@
 	font-size: 18px;
 	text-align: center;
 }
+
 /* head 部分结束 */
 
 /* 导航,面包屑 */
@@ -132,6 +133,7 @@
 	font-size: 16px;
 	white-space: nowrap;
 }
+
 /* 商品展示  135-216 */
 .show {
 	position: relative;
@@ -214,6 +216,7 @@
 .box-score a {
 	color: #999;
 }
+
 /* 商品展示界面结束 */
 
 
@@ -224,6 +227,7 @@
 	right: 10%;
 	height: 500px;
 }
+
 .notice-text h3 {
 	padding: 0px;
 	text-indent: 10px;
@@ -308,14 +312,17 @@
 	width: 100%;
 
 }
+
 .layui-form-label {
 	text-align: center;
 	width: 5%;
 }
+
 .layui-textarea {
 	margin-left: -30px;
 
 }
+
 /* 评论展示样式
 .com {
 	display: flex;
@@ -343,4 +350,29 @@
 
 .layui-table tr th {
 	text-align: center;
+}
+
+.CX {
+	position: static !important;
+}
+
+.H {
+	color: red !important;
+}
+
+.MS {
+
+	width: 142px;
+}
+
+.JG {
+	width: 28px;
+}
+
+.CPID {
+	width: 42px;
+}
+
+.CP {
+	width: 120px;
 }

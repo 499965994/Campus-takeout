@@ -1,5 +1,5 @@
 <% include ./common/demo-head.html%>
-<a href="/ucont"><img class="layui-nav-img" src="https://fuss10.elemecdn.com/3/58/a93fd92d242a7352e9fdb64b7d2eapng.png?imageMogr2/thumbnail/95x95/format/webp/quality/85"><%= username%></a>
+<a href="/ucont"><img class="layui-nav-img" src="https://fuss10.elemecdn.com/3/58/a93fd92d242a7352e9fdb64b7d2eapng.png?imageMogr2/thumbnail/95x95/format/webp/quality/85">admin</a>
 							<dl class="layui-nav-child">
 								<!-- 二级菜单 -->
 								<dd><a href="">个人中心</a></dd>
@@ -34,40 +34,44 @@
 			</div>
 		</div>
 <ul class="middle-nav">
-	<li><a href="">商家管理商品</a></li>
+	<li><a href="/acont">商家管理商品</a></li>
 </ul>
 <hr>
 <div class="show">
 	<div class="goods">
-<form class="layui-form" style="top: 0;"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
-  <div class="layui-form-item">
-    <label class="layui-form-label" style="width: 100px;">菜品名称</label>
-    <div class="layui-input-inline">
-      <input type="text" name="" placeholder="请输入名称" autocomplete="off" class="layui-input">
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label" style="width: 100px;">菜品价格</label>
-    <div class="layui-input-inline">
-      <input type="text" name="" placeholder="请输入价格" autocomplete="off" class="layui-input">
-    </div>
-  </div>
-  
-  <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label" style="width: 100px;">请填写描述</label>
-    <div class="layui-input-block">
-      <textarea placeholder="请输入描述" class="layui-textarea" style="width: 70%;"></textarea>
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" >立即提交</button>
-    
-    </div>
-  </div>
-  <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
-</form>
-		
+		<form class="layui-form" style="top: 0;">
+			<!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">菜品名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="pname" placeholder="请输入名称" autocomplete="off" class="layui-input">
+				</div>
+				<div class="layui-form-mid layui-word-aux H"></div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="width: 100px;">菜品价格</label>
+				<div class="layui-input-inline">
+					<input type="text" name="price" placeholder="请输入价格" autocomplete="off" class="layui-input">
+				</div>
+				<div class="layui-form-mid layui-word-aux H"></div>
+			</div>
+
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label" style="width: 100px;">请填写描述</label>
+				<div class="layui-input-block">
+					<textarea name="pdescribe" placeholder="请输入描述" class="layui-textarea" style="width: 70%;"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn addpro" type="button">立即添加</button>
+					<a href='/acont' class="layui-btn">返回<a>
+
+				</div>
+			</div>
+			<!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+		</form>
+
 
 
 

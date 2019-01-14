@@ -3,12 +3,13 @@ window.onload = function() {
 	userLogin(); //用户登录
 	userReg(); //用户注册
 	adminLogin(); //商家登录
-  addpro(); //商家增加菜品
+  	addpro(); //商家增加菜品
 	updatepro(); //商家修改菜品
 	delpro();//商家下架菜品
 	addShopCar(); //菜品添加到购物车
 	clearshopCar(); //清空购物车
 	todelCar(); //提交购物车商品到结算页面
+	subTalk(); //用户评论内容提交到数据库
 }
 //用户登录
 function userLogin() {
@@ -143,7 +144,9 @@ function userReg() {
 //管理员登录
 function adminLogin() {
 	let button = document.querySelector('.adminlogin');
-	if(!button){return;}
+	if (!button) {
+		return;
+	}
 	button.onclick = function() {
 		let errNum = 0;
 		//获取输入的信息，并检查
@@ -186,6 +189,42 @@ function adminLogin() {
 					}
 				})
 				.catch(function(error) {})
+		}
+	}
+}
+
+
+//用户评论内容提交到数据库
+function subTalk() {
+	let subbtn = document.querySelector("input[name=talkbtn]");
+	let error=0;
+	if (!subbtn) {
+		return
+	}
+	subbtn.onclick = function() {
+		let about = document.querySelector("textarea[name=desc]");
+		let t_value = about.value;
+		if (!t_value.length) {
+			about.nextElementSibling.innerHTML = "*必填";
+			error++;
+			return;
+		} else {
+			about.nextElementSibling.innerHTML = "";
+		}
+		if(!error){
+		axios.post("/ucont/comment",{
+			about:t_value
+		})
+		.then(function (response){
+			if(response.data.r=="ok"){
+				window.location.reload();
+			}else{
+				layer.msg("评论失败！");
+			}
+		})
+		.catch(function (error){
+			console.log(error);
+		});
 		}
 	}
 }

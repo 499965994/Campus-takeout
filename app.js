@@ -20,9 +20,8 @@ app.use(session({
     name:'sessid1810',
     resave: false,
     saveUninitialized: true,
-    cookie: {maxAge:24*3600000}
+    cookie: {maxAge:24*3600000*7}
   }));
-
 
 app.use(bodyParser.urlencoded({
 	extended: true
@@ -89,7 +88,12 @@ app.post('/adminLogin', (req, res) => {
 			r: 'ok'
 		});
 	})
-})
+});
+
+
+
+
+
 //user登录post路由
 app.post('/userLogin', (req, res) => {
 	let userLoginData = req.body;
@@ -110,12 +114,12 @@ app.post('/userLogin', (req, res) => {
 			return;
 		}
 		req.session.phonenum = result[0].phonenum;
-        req.session.username = result[0].username;
+		req.session.username = result[0].username;
 		//登录成功
 		res.json({
 			r: 'ok'
 		});
-	})
+	});
 })
 //用户注册信息录入
 app.post("/userRegist",(req,res)=>{

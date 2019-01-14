@@ -15,7 +15,7 @@
 						 alt="">
 					</div>
 					<p class="sname">正新鸡排（银泰城店）</p>
-					<p class="score">评分 : <a href="">x</a></p>
+					<p class="score">评分 : <a href="" style="color: yellow;font-size: 18px;">⭐⭐⭐⭐⭐</a></p>
 				</div>
 				<div class="introduce">
 					<div>
@@ -47,24 +47,25 @@
 		</div> -->
 		<table class="layui-table">
   <colgroup>
-    <col width="100">
-    <col width="600">
-
+    <col width="80">
+    <col width="400">
+	<col width="100">
   </colgroup>
   <thead>
     <tr>
 		<th>昵称</th>
 		<th>评论内容</th>
+		<th>发表时间</th>
     </tr> 
   </thead>
   <tbody>
+	  <% for(let i=0;i<tlist.length;i++){%>
     <tr>
-      <td>贤心</td>
-      <td> 1、食用安全 食用安全是菜品作为食品的基本前题。要保证菜品食用安全，就必须保证菜点的所有原料无毒无害、清洁卫生，力求烹调加工方法得当，避免加工环境污染食品，使菜品对人体无毒无害。
-				2、营养合理 营养合理是菜品作为食品的必要条件。对于单份菜品，要尽量避免原材料所合营养素</td>
-
+      <td><%= tlist[i].username%></td>
+      <td><%= tlist[i].about%></td>
+	  <td><%= new Date(tlist[i].talktimes).toLocaleString()%></td>
     </tr>
-
+	<%}%>
   </tbody>
 </table>
 		<form class="layui-form" action="">
@@ -72,11 +73,12 @@
 				<label class="layui-form-label">评论</label>
 				<div class="layui-input-block">
 					<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+					<div class="layui-form-mid layui-word-aux H"></div>
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn">提交</button>
+					<input type="button" class="layui-btn" name="talkbtn" value="提交">
 				</div>
 			</div>
 		</form>

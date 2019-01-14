@@ -217,7 +217,7 @@ td {
 
 .foot {
 	position: absolute;
-	top: 800px;
+	top: 1200px;
 
 	width: 100%;
 }
@@ -269,3 +269,150 @@ td {
 	align-items: center;
 	width: 50%;
 }
+
+/* 订单详情界面的样式 */
+.order-nav {
+	margin-top: 30px;
+	display: flex;
+	width: 100%;
+	height: 100px;
+	justify-content: space-around;
+	align-items: center;
+	background: #fff;
+}
+.order-nav li {
+	text-align: center;
+	width: 33%;
+	height: 40px;
+	color: #999;
+	font-size: 14px;
+	border-bottom: 1px solid #999;
+}
+
+	.order-text {
+		margin-top: 20px;
+		height: 100px;
+		display: flex;
+		padding: 10px;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #fefdee;
+		border: 1px solid #f8e5bb;
+		border-radius: 10px;
+	}
+	.order-text p {
+		color: #333;
+		font-size: 16px;
+		
+	}
+		.order-text p span {
+		color: #999;
+		font-size: 14px;
+		display: inline-block;
+		margin-top: 3px;
+		
+	}
+	.order-text button {
+		background: red;
+		color: #fff;
+		border: 0;
+		cursor: pointer;
+		width: 100px;
+		height: 30px;
+		line-height: 30px;
+		border-radius: 4px;
+	}
+	.order-tab {
+		margin-top: 20px;
+		background: #fff;
+	}
+	.order-tab-head {
+		position: relative;
+		height: 60px;
+		padding: 10px;
+		line-height: 50px;
+	}
+	.order-tab-head img {
+		height: 60px;
+	}
+	.order-tab-head p {
+		position: absolute;
+		top: 5px;
+		margin-left: 20px;
+		display: inline-block;
+	}
+	.order-tab-head p:nth-child(3) {
+		margin-top: 30px;
+		color: #999;
+		width: 40%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		font-size: 14px;
+		
+	}
+	.order-cn {
+		width: 100%;
+		display: flex;
+	}
+	.order-left {
+		width: 60%;
+	}
+	.order-right {
+		width: 40%;
+		padding: 5px;
+		
+	}
+	.order-right p {
+		font-size: 14px;
+		letter-spacing: 1px;
+		height: 35px;
+		line-height: 35px;
+	}
+	.layui-input-block {
+		text-align: center;
+		margin: 0;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		
+	}
+	.layui-input-block span {
+		color: red;
+		font-size: 24px;
+		font-weight: 700;
+	}
+	
+	
+	
+	/* 地址修改样式 */
+	
+	.layui-form input[type=radio] {
+		display: block;
+	}
+	.layui-input-inline {
+		display: flex;
+		align-items: center;
+		
+		height: 38px;
+	}
+	.layui-form-item {
+		width: 700px;
+	}
+	
+	.layui-form-item .layui-input-inline {
+		width: 500px;
+	}
+	
+	/* 个人资料样式 */
+	.per-data {
+		width: 40%;
+		padding: 5px;
+		
+	}
+	.per-data p {
+		font-size: 14px;
+		letter-spacing: 1px;
+		height: 35px;
+		line-height: 35px;
+	}

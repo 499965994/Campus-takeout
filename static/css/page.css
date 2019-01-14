@@ -351,7 +351,11 @@
 
 .H {
 	color: red !important;
-	margin-left: -30px;}
+}
+.MS {
+
+	width: 142px;
+}
 
 .JG {
 	width: 28px;

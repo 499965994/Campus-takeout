@@ -151,6 +151,48 @@ app.use('/userinfo', require('./router/userinfo'));
 app.use('/ucont', require('./router/ucont.js'));
 // 商家管理界面的子路由
 app.use('/acont', require('./router/acont'));
+
+// 个人资料模块
+//图片上传模块
+const multer = require('multer');
+//个人资料   -  get跳转
+app.get('/pre',(req,res)=> {
+	let sql = 'select * from predata where id=?';
+	mydb.query(sql,'1',(err,result)=> {
+		res.render('per-data',result[0]);
+	})	
+});
+// 个人资料  -  头像
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads');
+    },
+    filename: function (req, file, cb) {
+      cb(null, 
+        Date.now() + '_' + 
+        Math.random().toString().substr(2, 6) + '.' + 
+        file.originalname.split('.').pop()
+        )
+    }
+  })
+let upload = multer({ storage: storage });
+let host = 'http://localhost:81/';
+app.post('/uphead', upload.single('uhead'), (req, res) => {
+	console.log(req.file)
+    res.send(host + req.file.destination + '/' +  req.file.filename);
+});
+app.use('/uploads',express.static(__dirname + '/uploads'));
+//个人资料   表单提交
+app.post('/updpre',(req,res)=> {
+	let dat = req.body;
+	let sql = 'update predata set name=?,tel=?,sex=?,head=?,natur=? where id=?';
+	mydb.query(sql,[dat.uname,dat.uphone,dat.usex,dat.uimgsrc,dat.unatur,'1'],(err,result)=> {
+		res.json({r:'ok'});
+	});	
+});
+
+
+
 //静态资源托管
 app.use(express.static(__dirname + '/static'));
 

@@ -50,22 +50,22 @@
 		<a href="#">成都工商行政管理</a>Copyright ©2008-2018 成都皮皮虾信息科技有限公司, All Rights Reserved.
 	</p>
 
-</div>
-</body>
-<script src="/layui/layui.js"></script>
-<script>
-	//注意：导航 依赖 element 模块，否则无法进行功能性操作
-	layui.use('element', function () {
-		var element = layui.element;
-	});
-	let brand = document.querySelector(".head-brand")
-	let nav = document.querySelector(".head-user");
-	nav.onmouseover = function () {
-		brand.style.display = 'block';
-	}
-	nav.onmouseleave = function () {
-		brand.style.display = 'none';
-	}
-</script>
-
+		</div>
+	</body>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="/layui/layui.js"></script>
+	<script>
+		//注意：导航 依赖 element 模块，否则无法进行功能性操作
+		layui.use('element', function() {
+			var element = layui.element;
+		});
+		let brand = document.querySelector(".head-brand")
+		let nav = document.querySelector(".head-user");
+		nav.onmouseover = function() {
+			brand.style.display = 'block';
+		}
+		nav.onmouseleave = function() {
+			brand.style.display = 'none';
+		}
+	</script>
 </html>

@@ -1,14 +1,82 @@
 <% include ./common/center-head.html%>
-<div class="section" style="margin-top: 10px;">
-<h3>个人资料</h3>
-<hr>
-<div class="per-data">
-	<p>用户名：	<span><%= username%></span></p>
-	<p>联系电话: 	<span><%= phonenum%></span></p>
-
+<style>
+	.layui-form-item {
+		height: 80px;
+		width: 800px;
+		display: flex;
+		align-items: center;
+	}
+	.toolbar {
+		border: 1px solid #ccc;
+	}
+	.text {
+		position: absolute;
+		top: 37px;
+		border: 1px solid #ccc;
+		height: 150px;
+		width: 731px;
+	}
+	.H {
+		color: red !important;
+	}
+</style>
+<div class="section">
+	<h3>个人资料</h3>
+	<hr>
+	<div class="per-data">
+		<form class="layui-form">
+			<div class="layui-form-item">
+				<label class="layui-form-label">用户名</label>
+				<div class="layui-input-inline">
+					<input type="text" name="uname" class="layui-input" value=<%= name%>>
+				</div>
+				<div class="layui-form-mid layui-word-aux H"></div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">手机号</label>
+				<div class="layui-input-inline">
+					<input type="tel" name="uphone" class="layui-input" value=<%= tel%>>
+				</div>
+				<div class="layui-form-mid layui-word-aux H"></div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">性别</label>
+				<div class="layui-input-block">
+					<%if(sex==1) {%>
+					<input type="radio" name="sex" value="1" title="男" checked>先生&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="sex" value="0" title="女">女士
+					<%}else{%>
+					<input type="radio" name="sex" value="1" title="男">先生&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="sex" value="0" title="女" checked>女士
+					<%}%>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">上传头像</label>
+				<div class="layui-input-inline">
+					<label class="dhead" for="head">
+						<img src=<%= head%> id="headimg">
+					</label>
+					<input type="file" name="uhead" id="head" style="display:none">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">个人简介</label>
+				<div class="layui-input-inline">
+					<div id="div1" class="toolbar"></div>
+					<div id="div2" class="text"><p><%- natur%></p></div>
+					<textarea id="text1" style="display: none;" value=''></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item" style="justify-content: center; position: absolute; top: 650px;">
+				<button class="layui-btn  layui-btn-normal prebtn" type="button">保存修改</button>
+			</div>
+		</form>
+	</div>
 
 </div>
-
-</div>
-
+	<script src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
+	<script src="/js/per-data.js"></script>
+		
+	
 <% include ./common/center-foot.html%>

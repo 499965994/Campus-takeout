@@ -416,6 +416,13 @@ td {
 		height: 35px;
 		line-height: 35px;
 	}
+	/*个人资料图片样式*/
+	.per-data img {
+		width: 70px;
+		height: 70px;
+		border-radius: 50%;
+		cursor: pointer;
+	}
 	/* 评论页面 */
 	.com {
 		margin-top: 20px;

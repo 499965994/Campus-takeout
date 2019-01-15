@@ -43,8 +43,8 @@ router.post('/addpro', (req, res) => {
 					r: 'pname_had'
 				});
 			} else {
-				let sql = 'insert into products(pname,price,pdescribe) values(?,?,?)';
-				mydb.query(sql, [req.body.pname, req.body.price, req.body.pdescribe], (err, result) => {
+				let sql = 'insert into products(pname,price,pdescribe,imgsrc) values(?,?,?,?)';
+				mydb.query(sql, [req.body.pname, req.body.price, req.body.pdescribe, req.body.imgsrc], (err, result) => {
 					if (err) {
 						console.log(err);
 						return;
@@ -87,8 +87,8 @@ router.get('/updatep', (req, res) => {
 router.post('/updatepro', (req, res) => {
 	console.log(req.body)
 	//保存到数据库
-	let sql = 'update products set pname=?,price=?,pdescribe=? where pid=?';
-	mydb.query(sql, [req.body.pname, req.body.price, req.body.pdescribe, req.body.pid], (err, result) => {
+	let sql = 'update products set pname=?,price=?,pdescribe=?,imgsrc=? where pid=?';
+	mydb.query(sql, [req.body.pname, req.body.price, req.body.pdescribe, req.body.imgsrc, req.body.pid], (err, result) => {
 		if (err) {
 			console.log(err);
 		}

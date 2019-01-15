@@ -6,7 +6,6 @@
         // let editor = new E( document.getElementById('editor'));
 		let $text1 = document.getElementById('text1');
         editor.customConfig.onchange = function (html) {
-            // 监控变化，同步更新到 textarea
             $text1.value=html;
         }
         editor.create()

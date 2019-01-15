@@ -8,7 +8,6 @@ const mysql = require('mysql');
 const ejs = require('ejs');
 // 2，创建一个web应用
 const app = express();
-//接收post过来的数据
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 //开启cookie
@@ -22,7 +21,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: {maxAge:24*3600000*7}
   }));
-
+//接收post过来的数据
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
@@ -147,7 +146,7 @@ app.post("/userRegist",(req,res)=>{
 });
 
 // 用户个人中心的子路由
-// app.use('/userinfo', require('./router/userinfo'));
+app.use('/userinfo', require('./router/userinfo'));
 // // 用户操作页面子路由
 app.use('/ucont', require('./router/ucont.js'));
 // 商家管理界面的子路由

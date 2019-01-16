@@ -1,5 +1,39 @@
 <% include ./common/center-head.html%>
+<li><a href="/ucont?phonenum=<%= phonenum%>">首页</a></li>
+				<li><a href="">我的订单</a></li>
+			</ul>
+			<div class="head-user">
+				<a href="" class="head-user-text"><img src=<%= head%> class="layui-nav-img"><%= username%></a>
 
+				<ul class="head-brand">
+					<li><a href="">个人中心</a></li>
+					<li><a href="">我的地址</a></li>
+					<li><a href="/userLogin">退出登录</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="middle">
+			<ul class="article">
+				<li><a href="">个人中心</a></li>
+				<hr>
+				<li style="margin-top: 20px;">
+					我的订单
+					<a href="#">订单详情</a>
+				</li>
+				<hr>
+				<li>
+					我的资产
+					<a href="#">我的红包</a>
+					<a href="#">账户余额</a>
+					<a href="#">我的金币</a>
+				</li>
+				<hr>
+				<li>
+					我的资料
+					<a href="/pre">个人资料</a>
+					<a href="#">地址管理</a>
+				</li>
+			</ul>
 <div class="section" style="margin-top: 10px;">
 	<h3>订单详情</h3>
 	<hr>
@@ -40,99 +74,34 @@
 				</tr>
 			</thead>
 			<tbody>
+				<% let arrpro=delname.split(","); %>
+				<% for(let i=0;i<arrpro.length;i++){%>
+				<% let exparr=arrpro[i].split("---"); %>
 				<tr>
-					<td>豆腐干</td>
-					<td>1</td>
-					<td>0.50</td>
+					<td><%= exparr[0] %></td>
+					<td><%= exparr[1] %></td>
+					<td><%= exparr[2] %></td>
 				</tr>
-				<tr>
-					<td>香菇</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>木耳</td>
-					<td>1</td>
-					<td>0.50</td>
-				</tr>
-				<tr>
-					<td>广味香肠</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>米饭</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>金针菇</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>豆腐干</td>
-					<td>1</td>
-					<td>0.50</td>
-				</tr>
-				<tr>
-					<td>干豆皮</td>
-					<td>1</td>
-					<td>0.50</td>
-				</tr>
-				<tr>
-					<td>剑笋</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				
-				<tr>
-					<td>群肝</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>开花肠</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>鸡心</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>香辣里脊肉</td>
-					<td>1</td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>餐盒</td>
-					<td></td>
-					<td>1.00</td>
-				</tr>
-				<tr>
-					<td>配送费</td>
-					<td></td>
-					<td>0.00</td>
-				</tr>
+				<%}%>
 			</tbody>
 		</table>
 		<div class="layui-input-block">
-			实际支付: <span>12.50</span>
-			<button class="layui-btn">去支付</button>
+			实际支付: <span><%= allprice%>元</span>
+			<button class="layui-btn payfor" type="button">去支付</button>
 		</div>
 		</div>
 		<div class="order-right">
 			<p>配送信息</p>
 			<p>配送方式：	<span>乐山钵钵鸡提供配送服务</span></p>
 			<p>送达时间: 	<span>尽快送出</span></p>
-			<p>联系人：	<span>小明(<span>先生</span>)</span></p>
-			<p>联系电话: 	<span>18888888888</span></p>
-			<p>收货地址：	<span>武侯区科华北路57号</span></p>
-			<p>发票信息：	<span>无发票</span></p>
-			<p>备注：	<span>无需餐具</span></p>
-
+			<p>联系人：	<span><%= username%>(<span>用户</span>)</span></p>
+			<p>联系电话: 	<span><%= phonenum%></span></p>
+			<p>收货地址：<input type="text" name="address" id="" value="<%= address%>" class="layui-input" placeholder="请填写收货地址" />
+			<span style="color: red;"></span>
+			</p>
+			
+			<p>发票信息：<span>无发票</span></p>
+			<p>备注：<input type="text" name="tips" id="" value="" class="layui-input" placeholder="如有特殊需要请备注" /></p>
 		</div>
 	</div>
 	

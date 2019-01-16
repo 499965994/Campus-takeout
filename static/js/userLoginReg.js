@@ -3,13 +3,16 @@ window.onload = function() {
 	userLogin(); //用户登录
 	userReg(); //用户注册
 	adminLogin(); //商家登录
-  	addpro(); //商家增加菜品
+	addpro(); //商家增加菜品
 	updatepro(); //商家修改菜品
-	delpro();//商家下架菜品
+	delpro(); //商家下架菜品
 	addShopCar(); //菜品添加到购物车
 	clearshopCar(); //清空购物车
 	todelCar(); //提交购物车商品到结算页面
 	subTalk(); //用户评论内容提交到数据库
+	payFor(); //用户付款
+	imgup(); //用户资料修改-图片上传
+	changeSave(); //用户资料修改--保存
 }
 //用户登录
 function userLogin() {
@@ -20,23 +23,23 @@ function userLogin() {
 	button.onclick = function() {
 		let errNum = 0;
 		//获取输入的信息，并检查
-		let phonenum = document.querySelector('input[name="phonenum"]'); //属性选择器
+		let phonenum = document.querySelector('input[name=phonenum]'); //属性选择器
 		let u_value = phonenum.value;
-		if (u_value=='') {
+		if (!u_value.length) {
 			phonenum.parentElement.nextElementSibling.innerHTML = '*必填';
 			phonenum.focus();
 			errNum++;
 		} else {
 			phonenum.parentElement.nextElementSibling.innerHTML = '';
+			if (u_value.length > 11) {
+				phonenum.parentElement.nextElementSibling.innerHTML = '*格式错误';
+				phonenum.focus();
+				errNum++;
+			} else {
+				phonenum.parentElement.nextElementSibling.innerHTML = '';
+			}
 		}
-		if(u_value.length>11){
-			phonenum.parentElement.nextElementSibling.innerHTML = '*格式错误';
-			phonenum.focus();
-			errNum++;
-		}else{
-			phonenum.parentElement.nextElementSibling.innerHTML = '';
-		}
-		let userpasswd = document.querySelector('input[name="userpasswd"]') //属性选择器
+		let userpasswd = document.querySelector('input[name=userpasswd]') //属性选择器
 		let up_value = userpasswd.value;
 		if (up_value == '') {
 			userpasswd.parentElement.nextElementSibling.innerHTML = '*必填';
@@ -60,7 +63,7 @@ function userLogin() {
 						userpasswd.parentElement.nextElementSibling.innerHTML = '*密码错误';
 						userpasswd.focus();
 					} else if (response.data.r == 'ok') {
-						window.location.href = "ucont?phonenum="+u_value;
+						window.location.href = "ucont?phonenum=" + u_value;
 					} else {
 						alert('未知错误，刷新后操作');
 					}
@@ -79,8 +82,12 @@ function userReg() {
 	button.onclick = function() {
 		let errNum = 0;
 		//获取输入的信息，并检查
-		let rname = document.querySelector('input[name="rname"]'); //属性选择器
+		let rname = document.querySelector('input[name=rname]'); //属性选择器
 		let r_value = rname.value;
+		let phonenum = document.querySelector('input[name=phonenum]'); //属性选择器
+		let phone_value = phonenum.value;
+		let rpasswd = document.querySelector('input[name=rpasswd]') //属性选择器
+		let rp_value = rpasswd.value;
 		if (r_value == '') {
 			rname.parentElement.nextElementSibling.innerHTML = '*必填';
 			rname.focus();
@@ -88,24 +95,20 @@ function userReg() {
 		} else {
 			rname.parentElement.nextElementSibling.innerHTML = '';
 		}
-		let phonenum = document.querySelector('input[name="phonenum"]'); //属性选择器
-		let phone_value = phonenum.value;
 		if (phone_value == '') {
 			phonenum.parentElement.nextElementSibling.innerHTML = '*必填';
 			phonenum.focus();
 			errNum++;
 		} else {
 			phonenum.parentElement.nextElementSibling.innerHTML = '';
+			if (phone_value.length > 11) {
+				phonenum.parentElement.nextElementSibling.innerHTML = '*格式错误';
+				phonenum.focus();
+				errNum++;
+			} else {
+				phonenum.parentElement.nextElementSibling.innerHTML = '';
+			}
 		}
-		if(phone_value.length>11){
-			phonenum.parentElement.nextElementSibling.innerHTML = '*格式错误';
-			phonenum.focus();
-			errNum++;
-		}else {
-			phonenum.parentElement.nextElementSibling.innerHTML = '';
-		}
-		let rpasswd = document.querySelector('input[name="rpasswd"]') //属性选择器
-		let rp_value = rpasswd.value;
 		if (rp_value == '') {
 			rpasswd.parentElement.nextElementSibling.innerHTML = '*必填';
 			rpasswd.focus();
@@ -122,12 +125,11 @@ function userReg() {
 					apsswd: rp_value
 				})
 				.then(function(response) {
-					if(response.data.r=="phonenum_has_exists"){
+					if (response.data.r == "phonenum_has_exists") {
 						phonenum.parentElement.nextElementSibling.innerHTML = '已注册';
 						phonenum.focus();
 						return;
-					}
-					else if (response.data.r == 'ok') {
+					} else if (response.data.r == 'ok') {
 						phonenum.parentElement.nextElementSibling.innerHTML = '';
 						alert("注册成功！去登录吧！")
 						window.location.href = '/userlogin';
@@ -196,35 +198,35 @@ function adminLogin() {
 
 //用户评论内容提交到数据库
 function subTalk() {
-	let subbtn = document.querySelector("input[name=talkbtn]");
-	let error=0;
+	let subbtn = document.querySelector(".talkbtn");
 	if (!subbtn) {
 		return
 	}
 	subbtn.onclick = function() {
-		let about = document.querySelector("textarea[name=desc]");
+		let error = 0;
+		let about = document.querySelector("#text1");
 		let t_value = about.value;
-		if (!t_value.length) {
+		if (t_value==""){
 			about.nextElementSibling.innerHTML = "*必填";
 			error++;
 			return;
 		} else {
 			about.nextElementSibling.innerHTML = "";
 		}
-		if(!error){
-		axios.post("/ucont/comment",{
-			about:t_value
-		})
-		.then(function (response){
-			if(response.data.r=="ok"){
-				window.location.reload();
-			}else{
-				layer.msg("评论失败！");
-			}
-		})
-		.catch(function (error){
-			console.log(error);
-		});
+		if (!error) {
+			axios.post("/ucont/comment", {
+					about: t_value
+				})
+				.then(function(response) {
+					if (response.data.r == "ok") {
+						window.location.reload();
+					} else {
+						layer.msg("评论失败！");
+					}
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		}
 	}
 }

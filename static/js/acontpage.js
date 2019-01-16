@@ -121,7 +121,7 @@ function updatepro() {
 function delpro() {
 	//使用事件代理实现点击事件  confirm
 	let prolist1 = document.querySelector('.prolist');
-	console.log(prolist1)
+	// console.log(prolist1)
 	prolist1 && (prolist1.onclick = function (e) {
 		let target = e.target;
 		console.log(e)

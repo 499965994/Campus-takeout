@@ -8,6 +8,7 @@ const mysql = require('mysql');
 const ejs = require('ejs');
 // 2，创建一个web应用
 const app = express();
+//接收post过来的数据
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 //开启cookie
@@ -114,6 +115,7 @@ app.post('/userLogin', (req, res) => {
 		}
 		req.session.phonenum = result[0].phonenum;
 		req.session.username = result[0].username;
+		req.session.head=result[0].head;
 		//登录成功
 		res.json({
 			r: 'ok'
@@ -157,8 +159,8 @@ app.use('/acont', require('./router/acont'));
 const multer = require('multer');
 //个人资料   -  get跳转
 app.get('/pre',(req,res)=> {
-	let sql = 'select * from predata where id=?';
-	mydb.query(sql,'1',(err,result)=> {
+	let sql = 'select * from user where phonenum=?';
+	mydb.query(sql,req.session.phonenum,(err,result)=> {
 		res.render('per-data',result[0]);
 	})	
 });
@@ -178,15 +180,17 @@ let storage = multer.diskStorage({
 let upload = multer({ storage: storage });
 let host = 'http://localhost:81/';
 app.post('/uphead', upload.single('uhead'), (req, res) => {
-	console.log(req.file)
+	// console.log(req.file)
     res.send(host + req.file.destination + '/' +  req.file.filename);
 });
 app.use('/uploads',express.static(__dirname + '/uploads'));
 //个人资料   表单提交
 app.post('/updpre',(req,res)=> {
 	let dat = req.body;
-	let sql = 'update predata set name=?,tel=?,sex=?,head=?,natur=? where id=?';
-	mydb.query(sql,[dat.uname,dat.uphone,dat.usex,dat.uimgsrc,dat.unatur,'1'],(err,result)=> {
+	let sql = 'update user set username=?,head=?,natur=? where phonenum=?';
+	mydb.query(sql,[dat.uname,dat.uimgsrc,dat.unatur,req.session.phonenum],(err,result)=> {
+		req.session.username=dat.uname;
+		req.session.head=dat.uimgsrc;
 		res.json({r:'ok'});
 	});	
 });

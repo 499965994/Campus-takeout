@@ -1,4 +1,9 @@
 <% include ./common/demo-head.html%>
+<li><a href="/">首页</a></li>
+				</ul>
+				<div class="head-login btn-group">
+					<ul class="layui-nav">
+						<li class="layui-nav-item">
 <a href="/acont"><img class="layui-nav-img" src="/img/logo.png">admin</a>
 <dl class="layui-nav-child">
 	<!-- 二级菜单 -->
@@ -36,7 +41,6 @@
 <hr>
 <div class="show">
 	<div class="goods">
-
 
 		<form class="layui-form CX" action="/acont" method="GET">
 			<div class="layui-inline">
@@ -84,7 +88,7 @@
 						<%= prolist[i].pdescribe%>
 					</td>
 					<td class="MS" align="center"><a href="###" class="delpro layui-btn" data-pid="<%= prolist[i].pid%>">删除</a>
-						<a class="layui-btn" href="/acont/updatep?pid=<%= prolist[i].pid%>">修改</a>
+						<a class="layui-btn" href="/acont/updatep?pid=<%= prolist[i].pid%>" style="margin-left: 0px;">修改</a>
 					</td>
 				</tr>
 				<%}%>
@@ -111,4 +115,6 @@
 		</div>
 	</div>
 </div>
+<!-- 购物车组件, 当点击加入购物车时,此处使用循环 -->
+
 <% include ./common/demo-foot.html%>

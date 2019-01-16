@@ -1,24 +1,13 @@
 </body>
-<script src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
-<script type="text/javascript">
-        let E = window.wangEditor
-        let editor = new E('#editor')
-        // let editor = new E( document.getElementById('editor'));
-		let $text1 = document.getElementById('text1');
-        editor.customConfig.onchange = function (html) {
-            $text1.value=html;
-        }
-        editor.create()
-    </script>
 <script src="/js/userLoginReg.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/layui/layui.all.js"></script>
+<script src="/js/shopcar.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/acontpage.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/layui/layui.all.js"></script>
 	<script>
 		layui.use('element', function() {
 			var element = layui.element;
 		});
 	</script>
-	<script src="/js/userLoginReg.js"></script>
-	<script src="/js/acontpage.js"></script>
-	<script src="/js/shopcar.js"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </html>

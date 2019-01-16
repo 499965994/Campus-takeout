@@ -6,6 +6,13 @@
 	font: 400 1em/1.5 PingFang SC, Lantinghei SC, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none; 
+    margin: 0; 
+}
+
 html {
 	height: 90%;
 	background: linear-gradient(#009688 50%, #fff 100%) no-repeat;

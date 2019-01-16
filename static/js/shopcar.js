@@ -99,3 +99,49 @@ function todelCar() {
 		}
 	}
 }
+
+//结算页面提交，将订单信息发送给后端存入数据库
+function payFor() {
+	let paybtn = document.querySelector(".payfor");
+	let str = window.location.search.slice(1);
+	if (!paybtn) {
+		return;
+	}
+	paybtn.onclick = function() {
+		let adres = document.querySelector("input[name=address]");
+		let address = adres.value; //地址
+		let tipsinfor = document.querySelector("input[name=tips]");
+		let tips = tipsinfor.value; //备注信息
+		let errnum = 0;
+		if (!address.length) {
+			adres.nextElementSibling.innerHTML = "*请填写详细收货地址";
+			errnum++;
+			return;
+		} else {
+			adres.nextElementSibling.innerHTML = "";
+		}
+		if (!errnum) {
+			let urlarr = str.split("&");
+			let oname = "";
+			let allprice = 0;
+			oname += urlarr[0].split("=")[1];
+			allprice = urlarr[1].split("=")[1];
+			axios.post("/ucont/payfor", {
+					ordername: oname,
+					orderprice: allprice,
+					orderaddress: address,
+					ordertips: tips
+				})
+				.then(function(response) {
+					if (response.data.r == "error") {
+						layer.msg = "支付失败，请重新支付"
+					} else if (response.data.r = "ok") {
+						window.location.href = "/ucont/center";
+					}
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
+		}
+	}
+}

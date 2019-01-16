@@ -1,9 +1,45 @@
 <% include ./common/center-head.html%>
+<li><a href="/ucont?phonenum=<%= phonenum%>">首页</a></li>
+				<li><a href="">我的订单</a></li>
+			</ul>
+			<div class="head-user">
+				<a href="" class="head-user-text"><img src=<%= head%> class="layui-nav-img"><%= username%></a>
+
+				<ul class="head-brand">
+					<li><a href="">个人中心</a></li>
+					<li><a href="">我的地址</a></li>
+					<li><a href="/userLogin">退出登录</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="middle">
+			<ul class="article">
+				<li><a href="">个人中心</a></li>
+				<hr>
+				<li style="margin-top: 20px;">
+					我的订单
+					<a href="#">订单详情</a>
+				</li>
+				<hr>
+				<li>
+					我的资产
+					<a href="#">我的红包</a>
+					<a href="#">账户余额</a>
+					<a href="#">我的金币</a>
+				</li>
+				<hr>
+				<li>
+					我的资料
+					<a href="/pre">个人资料</a>
+					<a href="#">地址管理</a>
+				</li>
+			</ul>
 			<div class="section">
 				<div class="section-head">
 					<div class="section-head-info">
-						<img src="http://t.cn/RCzsdCq" alt="">
-						<p>早上好<b><%= username%></b></p>
+						<img src=<%= head%> alt="">
+
+						<p>您好！<b><%= username%></b></p>
 						<p class="section-head-info-text">订餐了吗？提前订餐送的快！</p>
 					</div>
 					<ul>
@@ -26,29 +62,33 @@
 					<hr>
 					<table class="layui-table">
 						<colgroup>
-							<col width="150">
-							<col width="400">
+							<col width="300">
+							<col width="100">
+							<col width="100">
 							<col width="150">
 							<col width="100">
 						</colgroup>
 						<thead>
 							<tr>
-								<th>菜品</th>
-								<th>描述</th>
-								<th>时间</th>
-								<th>操作</th>
+								<th>订单详情</th>
+								<th>备注信息</th>
+								<th>收货地址</th>
+								<th>下单时间</th>
+								<th>支付金额</th>
 							</tr>
 						</thead>
 						<tbody>
+							<% for(let i=0;i<orders.length;i++){ %>
 							<tr>
-								<td><img src="https://fuss10.elemecdn.com/1/2e/20670a4bcdf645267878363ba71a6jpeg.jpeg?imageMogr2/thumbnail/100x100/format/webp/quality/85"></td>
+								<td><%= decodeURIComponent(orders[i].pname)%></td>
 								<td>
-									<p class="box-name">涛涛鸡汤饭</p>
-									<p class="box-info">招牌大补参鸡汤，营养美味不是吹的，特价尝鲜一个月。</p>
+									<p class="box-info"><%= orders[i].tips%></p>
 								</td>
-								<td>2019/9/9</td>
-								<td><a href="">查看详情</a></td>
+								<td><%= orders[i].address%></td>
+								<td><%= new Date(orders[i].ordertime).toLocaleString() %></td>
+								<td><%= orders[i].oprice%>元</td>
 							</tr>
+							<%}%>
 						</tbody>
 					</table>
 				</div>

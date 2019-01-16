@@ -1,4 +1,39 @@
 <% include ./common/center-head.html%>
+<li><a href="/ucont?phonenum=<%= phonenum%>">首页</a></li>
+				<li><a href="/ucont/center">我的订单</a></li>
+			</ul>
+			<div class="head-user">
+				<a href="" class="head-user-text"><img src=<%= head%> class="layui-nav-img"><%= username%></a>
+
+				<ul class="head-brand">
+					<li><a href="">个人中心</a></li>
+					<li><a href="">我的地址</a></li>
+					<li><a href="/userLogin">退出登录</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="middle">
+			<ul class="article">
+				<li><a href="">个人中心</a></li>
+				<hr>
+				<li style="margin-top: 20px;">
+					我的订单
+					<a href="#">订单详情</a>
+				</li>
+				<hr>
+				<li>
+					我的资产
+					<a href="#">我的红包</a>
+					<a href="#">账户余额</a>
+					<a href="#">我的金币</a>
+				</li>
+				<hr>
+				<li>
+					我的资料
+					<a href="">个人资料</a>
+					<a href="#">地址管理</a>
+				</li>
+			</ul>
 <style>
 	.layui-form-item {
 		height: 80px;
@@ -28,28 +63,9 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">用户名</label>
 				<div class="layui-input-inline">
-					<input type="text" name="uname" class="layui-input" value=<%= name%>>
+					<input type="text" name="uname" class="layui-input" value=<%= username%> >
 				</div>
 				<div class="layui-form-mid layui-word-aux H"></div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">手机号</label>
-				<div class="layui-input-inline">
-					<input type="tel" name="uphone" class="layui-input" value=<%= tel%>>
-				</div>
-				<div class="layui-form-mid layui-word-aux H"></div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">性别</label>
-				<div class="layui-input-block">
-					<%if(sex==1) {%>
-					<input type="radio" name="sex" value="1" title="男" checked>先生&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="sex" value="0" title="女">女士
-					<%}else{%>
-					<input type="radio" name="sex" value="1" title="男">先生&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="sex" value="0" title="女" checked>女士
-					<%}%>
-				</div>
 			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">上传头像</label>
@@ -73,10 +89,21 @@
 			</div>
 		</form>
 	</div>
-
 </div>
 	<script src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
 	<script src="/js/per-data.js"></script>
-		
-	
+	<script type="text/javascript">
+		let E = window.wangEditor;
+				let editor1 = new E('#div1','#div2');
+				let text1 = document.querySelector('#text1');
+				let div2 =  document.querySelector('#div2');
+				editor1.customConfig.onchange = function(html) {
+					// 监控变化，同步更新到 textarea
+					text1.value = html;
+				};
+				editor1.customConfig.uploadImgServer = '/upload'
+				editor1.create();
+				// 初始化 textarea 的值
+				text1.value = editor1.txt.text();
+	</script>
 <% include ./common/center-foot.html%>

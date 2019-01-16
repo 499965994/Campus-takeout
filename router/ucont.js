@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 	let username = req.session.username;
 	mydb.query("select * from user where username=?",[req.session.username],(err,results)=>{
 		if(err){console.log(err);return}
-		if(results[0].phonenum!=req.query.phonenum){
+		if(results.length && results[0].phonenum!=req.query.phonenum){
 				res.redirect("userLogin");
 				return;
 		}else{
